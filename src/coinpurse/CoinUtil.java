@@ -50,27 +50,28 @@ public class CoinUtil {
 	 * Hint: this is easy if you sort the coins by currency first. :-)
 	 */
 	public static void sumByCurrency(List<Coin> coins) {
-		Map<String, Double> map = new HashMap<>();
-		for (Coin c : coins) {
-			map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) + c.getValue());
+		sortByCurrency(coins);
+		String currency = coins.get(0).getCurrency();
+		double sum = 0.0;
+		for (Coin curr : coins) {
+			if (curr.getCurrency().equals(currency)) {
+				sum += curr.getValue();
+			} else {
+				System.out.printf("%.2f %s\n", sum, currency);
+				sum = 0;
+				sum = sum + curr.getValue();
+				currency = curr.getCurrency();
+			}
 		}
-		for (String currency : map.keySet()) {
-			System.out.println(map.get(currency) + " " + currency);
-		}
-//		sortByCurrency(coins);
-//		String currency = coins.get(0).getCurrency();
-//		double sum = 0.0;
-//		for (Coin curr : coins) {
-//			if (curr.getCurrency().equals(currency)) {
-//				sum += curr.getValue();
-//			} else {
-//				System.out.printf("%.2f %s\n", sum, currency);
-//				sum = 0;
-//				currency = curr.getCurrency();
-//			}
-//		}
-//		System.out.printf("%.2f %s\n", sum, currency);
+		System.out.printf("%.2f %s\n", sum, currency);
 	}
+//	Map<String, Double> map = new HashMap<>();
+//	for (Coin c : coins) {
+//		map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) + c.getValue());
+//	}
+//	for (String currency : map.keySet()) {
+//		System.out.println(map.get(currency) + " " + currency);
+//	}
 
 	/**
 	 * This method contains some code to test the above methods.
