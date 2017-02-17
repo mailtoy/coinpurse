@@ -18,11 +18,11 @@ public class CoinUtil {
 	 * @return a new List containing only the elements from coinlist that have
 	 *         the requested currency.
 	 */
-	public static List<Coin> filterByCurrency(final List<Coin> coinlist, String currency) {
-		List<Coin> list = new ArrayList<>();
-		for (Coin coin : coinlist) {
-			if (coin.getCurrency().equals(currency)) {
-				list.add(coin);
+	public static List< Valuable> filterByCurrency(List<? extends Valuable> coinlist, String currency) {
+		List<Valuable> list = new ArrayList<>();
+		for ( Valuable value : coinlist) {
+			if (value.getCurrency().equals(currency)) {
+				list.add(value);
 			}
 		}
 		return list;
@@ -35,8 +35,8 @@ public class CoinUtil {
 	 * @param coins is a List of Coin objects we want to sort.
 	 * 
 	 */
-	public static void sortByCurrency(List<Coin> coins) {
-		Collections.sort(coins, new CoinComparator());
+	public static void sortByCurrency(List<? extends Valuable> value) {
+		Collections.sort(value, new CoinComparator());
 	}
 
 	/**
@@ -49,22 +49,46 @@ public class CoinUtil {
 	 * 
 	 * Hint: this is easy if you sort the coins by currency first. :-)
 	 */
-	public static void sumByCurrency(List<Coin> coins) {
-		sortByCurrency(coins);
-		String currency = coins.get(0).getCurrency();
-		double sum = 0.0;
-		for (Coin curr : coins) {
-			if (curr.getCurrency().equals(currency)) {
-				sum += curr.getValue();
-			} else {
-				System.out.printf("%.2f %s\n", sum, currency);
-				sum = 0;
-				sum = sum + curr.getValue();
-				currency = curr.getCurrency();
-			}
+	public static void sumByCurrency(List<? extends Valuable> value) {
+		Map<String, Double> map = new HashMap<>();
+		for (Valuable c : value) {
+			map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) + c.getValue());
 		}
-		System.out.printf("%.2f %s\n", sum, currency);
+		for (String currency : map.keySet()) {
+			System.out.println(map.get(currency) + " " + currency);
+		}
 	}
+//		Map<String,Double> map = new HashMap<String,Double>();
+//		Iterator<Valuable> iterator = value.iterator();
+//		while (iterator.hasNext()) {
+//			Valuable valuable = iterator.next();
+//			if (map.containsKey(valuable.getCurrency() ) ) {
+//				map.put(valuable.getCurrency(), map.get(valuable.getCurrency()) + valuable.getValue());
+//				} 
+//				else map.put(valuable.getCurrency(), valuable.getValue());	
+//			}
+//		for(String key : map.keySet()) {
+//			// print the key (string) and value (integer)
+//			System.out.println(key + " : " + map.get(key));
+//		}
+			
+		
+//		sortByCurrency(coins);
+//		String currency = coins.get(0).getCurrency();
+//		double sum = 0.0;
+//		for (Valuable curr : coins) {
+//			if (curr.getCurrency().equals(currency)) {
+//				sum += curr.getValue();
+//			} else {
+//				System.out.printf("%.2f %s\n", sum, currency);
+//				sum = 0;
+//				sum = sum + curr.getValue();
+//				currency = curr.getCurrency();
+//			}
+//		}
+//		System.out.printf("%.2f %s\n", sum, currency);
+//	}
+	
 //	Map<String, Double> map = new HashMap<>();
 //	for (Coin c : coins) {
 //		map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) + c.getValue());
@@ -85,7 +109,7 @@ public class CoinUtil {
 		int size = coins.size();
 		System.out.print(" INPUT: ");
 		printList(coins, " ");
-		List<Coin> rupees = filterByCurrency(coins, currency);
+		List<Valuable> rupees = filterByCurrency(coins, currency);
 		System.out.print("RESULT: ");
 		printList(rupees, " ");
 		if (coins.size() != size)
@@ -104,7 +128,6 @@ public class CoinUtil {
 		System.out.print("coins= ");
 		printList(coins, " ");
 		sumByCurrency(coins);
-
 	}
 
 	/** Make a list of coins containing different currencies. */
@@ -137,5 +160,4 @@ public class CoinUtil {
 		}
 		System.out.println(); // end the line
 	}
-
 }

@@ -1,17 +1,17 @@
 package coinpurse;
 
 /**
- * Coin represents coinage (money) with a fixed value and currency.
+ * BankNote represents money with a fixed value and currency.
  * 
  * @author Kanchanok Kannee
  */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Valuable {
 
 	public static final String DEFAULT_CURRENCY = "Baht";
 	/** Value of the coin. */
-	private final double value;
+	private double value;
 	/** The currency, of course. */
-	private final String currency;
+	private String currency;
 
 	/**
 	 * A coin with given value using the default currency.
@@ -68,24 +68,7 @@ public class Coin implements Comparable<Coin> {
 		if (arg.getClass() != this.getClass())
 			return false;
 		Coin other = (Coin) arg;
-		if (currency.equalsIgnoreCase(other.currency) && this.value == other.value)
-			return true;
-		return false;
-	}
-
-	/**
-	 * Order Coins by value so that the smaller value comes first
-	 * 
-	 * @param c is object of Coin that you want to compare with
-	 * @return 1 if this coin has greater value 
-	 *         0 if both have same value 
-	 *        -1 if this coin has lesser value
-	 */
-	@Override
-	public int compareTo(Coin c) {
-		if (c == null)
-			return -1;
-		return (int) Math.signum(this.value - c.value);
+		return this.value == other.value && this.currency == other.currency;
 	}
 
 	/**
