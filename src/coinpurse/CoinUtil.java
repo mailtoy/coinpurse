@@ -19,7 +19,7 @@ public class CoinUtil {
 	 * @return a new List containing only the elements from coinlist that have
 	 *         the requested currency.
 	 */
-	public static List<Valuable> filterByCurrency(List<? extends Valuable> coinlist, String currency) {
+	public static List<Valuable> filterByCurrency(List<Valuable> coinlist, String currency) {
 		List<Valuable> list = new ArrayList<>();
 		for (Valuable value : coinlist) {
 			if (value.getCurrency().equals(currency)) {
@@ -36,7 +36,7 @@ public class CoinUtil {
 	 * @param value is a List of valuable we want to sort.
 	 * 
 	 */
-	public static void sortByCurrency(List<? extends Valuable> value) {
+	public static void sortByCurrency(List<Valuable> value) {
 		Collections.sort(value, new CoinComparator());
 	}
 
@@ -50,7 +50,7 @@ public class CoinUtil {
 	 * 
 	 * Hint: this is easy if you sort the coins by currency first. :-)
 	 */
-	public static void sumByCurrency(List<? extends Valuable> value) {
+	public static void sumByCurrency(List<Valuable> value) {
 		Map<String, Double> map = new HashMap<>();
 		for (Valuable c : value) {
 			map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) + c.getValue());
@@ -102,13 +102,12 @@ public class CoinUtil {
 	/**
 	 * This method contains some code to test the above methods.
 	 * 
-	 * @param args
-	 *            not used
+	 * @param args not used
 	 */
 	public static void main(String[] args) {
 		String currency = "Rupee";
 		System.out.println("Filter coins by currency of " + currency);
-		List<Coin> coins = makeInternationalCoins();
+		List<Valuable> coins = makeInternationalCoins();
 		int size = coins.size();
 		System.out.print(" INPUT: ");
 		printList(coins, " ");
@@ -134,8 +133,8 @@ public class CoinUtil {
 	}
 
 	/** Make a list of money containing different currencies. */
-	public static List<Coin> makeInternationalCoins() {
-		List<Coin> money = new ArrayList<Coin>();
+	public static List<Valuable> makeInternationalCoins() {
+		List<Valuable> money = new ArrayList<Valuable>();
 		money.addAll(makeCoins("Baht", 0.25, 1.0, 2.0, 5.0, 10.0, 10.0));
 		money.addAll(makeCoins("Ringgit", 2.0, 50.0, 1.0, 5.0));
 		money.addAll(makeCoins("Rupee", 0.5, 0.5, 10.0, 1.0));
