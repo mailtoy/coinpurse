@@ -8,8 +8,8 @@ import org.junit.Test;
  * Test the Purse. This is a JUnit 4 test. To run these tests, right click on
  * this file (in Navigator pane) and choose Run As -> JUnit test
  * 
- * @author Resident Evil
- * @version 2017.02.01
+ * @author Kanchanok Kannee
+ * @version 2017.02.18
  */
 public class PurseTest {
 	/** tolerance for comparing two double values */
@@ -137,16 +137,16 @@ public class PurseTest {
 	}
 
 	/**
-	 * Sum the value of some coins.
+	 * Sum the value of some money.
 	 * 
-	 * @param coins array of coins
-	 * @return sum of values of the coins
+	 * @param money array of Valuable.
+	 * @return sum of values of the money.
 	 */
-	private double sumValue(Valuable[] coins) {
-		if (coins == null)
+	private double sumValue(Valuable[] money) {
+		if (money == null)
 			return 0;
 		double sum = 0;
-		for (Valuable c : coins)
+		for (Valuable c : money)
 			if (c != null)
 				sum += c.getValue();
 		return sum;

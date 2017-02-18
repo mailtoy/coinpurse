@@ -16,7 +16,7 @@ public class Coin implements Valuable {
 	/**
 	 * A coin with given value using the default currency.
 	 * 
-	 * @param value
+	 * @param value is the value of coin.
 	 */
 	public Coin(double value) {
 		this.value = value;
@@ -26,8 +26,8 @@ public class Coin implements Valuable {
 	/**
 	 * A coin with given value and currency.
 	 * 
-	 * @param value
-	 * @param currency
+	 * @param value is the value of coin.
+	 * @param currency is the currency of coin.
 	 */
 	public Coin(double value, String currency) {
 		this.value = value;

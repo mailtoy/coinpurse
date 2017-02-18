@@ -15,7 +15,7 @@ public class BankNote implements Valuable {
 	/**
 	 * A banknote with given value using the default currency.
 	 * 
-	 * @param value
+	 * @param value is the value of banknote.
 	 */
 	public BankNote(double value) {
 		this.value = value;
@@ -26,8 +26,8 @@ public class BankNote implements Valuable {
 	/**
 	 * A banknote with given value and currency.
 	 * 
-	 * @param value
-	 * @param currency
+	 * @param value is the value of banknote.
+	 * @param currency is the currency of banknote.
 	 */
 	public BankNote(double value, String currency) {
 		this.value = value;

@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * A coin purse contains coins. You can insert coins, withdraw money, check the
- * balance, and check if the purse is full. When you withdraw money, the coin
- * purse decides which coins to remove.
+ * A coin purse contains money. You can insert money, withdraw money, check the
+ * balance, and check if the purse is full. When you withdraw money, the money
+ * purse decides which money to remove.
  * 
  * @author Kanchanok Kannee
  */
@@ -138,6 +138,11 @@ public class Purse {
 		return this.money.size() + " items with value " + this.getBalance();
 	}
 
+	/**
+	 * Test the Purse
+	 * 
+	 * @param arg not used
+	 */
 	public static void main(String[] arg) {
 		Purse purse = new Purse(10);
 		System.out.println(purse.getBalance());
