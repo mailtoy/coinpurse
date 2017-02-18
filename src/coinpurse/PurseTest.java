@@ -139,8 +139,7 @@ public class PurseTest {
 	/**
 	 * Sum the value of some coins.
 	 * 
-	 * @param coins
-	 *            array of coins
+	 * @param coins array of coins
 	 * @return sum of values of the coins
 	 */
 	private double sumValue(Valuable[] coins) {

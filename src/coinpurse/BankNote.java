@@ -1,7 +1,8 @@
 package coinpurse;
 
 /**
- * Coin represents coinage (money) with a fixed value and currency.
+ * Banknote represents coinage (money) with a fixed value and currency.
+ * 
  * @author Kanchanok Kannee
  *
  */
@@ -10,13 +11,24 @@ public class BankNote implements Valuable {
 	private double value;
 	private String currency = "Baht";
 	private long serialNumber;
-	
+
+	/**
+	 * A banknote with given value using the default currency.
+	 * 
+	 * @param value
+	 */
 	public BankNote(double value) {
 		this.value = value;
 		this.serialNumber = BankNote.nextSerialNumber;
 		BankNote.nextSerialNumber++;
 	}
-	
+
+	/**
+	 * A banknote with given value and currency.
+	 * 
+	 * @param value
+	 * @param currency
+	 */
 	public BankNote(double value, String currency) {
 		this.value = value;
 		this.currency = currency;
@@ -24,24 +36,44 @@ public class BankNote implements Valuable {
 		BankNote.nextSerialNumber++;
 	}
 
+	/**
+	 * Return the value of the banknote.
+	 * 
+	 * @return the value.
+	 */
 	@Override
 	public double getValue() {
 		return this.value;
 	}
 
+	/**
+	 * Return the currency of the banknote.
+	 * 
+	 * @return the currency.
+	 */
 	@Override
 	public String getCurrency() {
 		return this.currency;
 	}
-	
+
+	/**
+	 * Return the serialnumber of the banknote.
+	 * 
+	 * @return the serialnumber.
+	 */
 	public long getSerialNumber() {
 		return this.serialNumber;
 	}
-	
+
+	/**
+	 * set the number of serialnumber
+	 * 
+	 * @param hint is the text that you want to change
+	 */
 	public void setSerialNumber(long serialNumber) {
 		this.serialNumber = serialNumber;
 	}
-	
+
 	/**
 	 * Compare two coins by value and currency. They are equal if the value and
 	 * currency matches.
@@ -59,9 +91,15 @@ public class BankNote implements Valuable {
 		BankNote other = (BankNote) arg;
 		return this.value == other.value && this.currency == other.currency;
 	}
-	
+
+	/**
+	 * Return a string representation of this BankNote
+	 * 
+	 * @return string that describes the banknote
+	 * 
+	 */
 	public String toString() {
 		return this.value + "-" + this.currency + " note [" + this.serialNumber + "]";
 	}
-	
+
 }

@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * BankNote represents money with a fixed value and currency.
+ * Coin represents coinage (money) with a fixed value and currency.
  * 
  * @author Kanchanok Kannee
  */
@@ -74,8 +74,8 @@ public class Coin implements Valuable {
 	/**
 	 * Return a string representation of this Coin
 	 * 
-	 *  @return string that describes the coin
-	 *  
+	 * @return string that describes the coin
+	 * 
 	 */
 	public String toString() {
 		return this.value + "-" + this.currency;

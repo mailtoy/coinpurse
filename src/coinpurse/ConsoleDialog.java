@@ -11,7 +11,7 @@ import java.util.Scanner;
  * 
  */
 public class ConsoleDialog {
-	
+
 	// default currency for this dialog
 	public static final String CURRENCY = "Baht";
 	// use a single java.util.Scanner object for reading all input
@@ -55,7 +55,7 @@ public class ConsoleDialog {
 	}
 
 	/**
-	 * Ask the user how many coins to deposit into purse, then deposit them.
+	 * Ask the user how many value to deposit into purse, then deposit them.
 	 * Show result of success or failure.
 	 */
 	public void depositDialog() {

@@ -77,62 +77,57 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a coin into the purse. The coin is only inserted if the purse has
-	 * space for it and the coin has positive value. No worthless coins!
+	 * Insert a value into the purse. The value is only inserted if the purse
+	 * has space for it and the value has positive value. No worthless values!
 	 * 
-	 * @param coin is a Coin object to insert into purse
-	 * @return true if coin inserted, false if can't insert
+	 * @param value is a Valuable to insert into purse
+	 * @return true if value inserted, false if can't insert
 	 */
 	public boolean insert(Valuable value) {
 		if (value.getValue() <= 0) {
 			return false;
 		}
 		if (!isFull()) {
-		this.money.add(value);
-//		balance += value.getValue();
-		Collections.sort(money, new Comparator<Valuable>() {
-			@Override
-			public int compare(Valuable o1, Valuable o2) {
-				return Double.compare(o1.getValue(), o2.getValue());
-			}
-		});
-//		Collections.reverse(money);
-		return true;
+			this.money.add(value);
+			Collections.sort(money, new Comparator<Valuable>() {
+				@Override
+				public int compare(Valuable o1, Valuable o2) {
+					return Double.compare(o1.getValue(), o2.getValue());
+				}
+			});
+			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins
+	 * Withdraw the requested amount of money. Return an array of Valuable
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
 	 * 
 	 * @param amount is the amount to withdraw
-	 * @return array of Coin objects for money withdrawn, or null if cannot
-	 *         withdraw requested amount.
+	 * @return array of Valuable for money withdrawn, or null if cannot withdraw
+	 *         requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
 		List<Valuable> withdraw = new ArrayList<Valuable>();
-			for (int i = money.size() - 1; i >=0; i--) {
-				Valuable value = this.money.get(i);
-				if (value.getValue() <= amount) {
-					amount = amount - value.getValue();
-					withdraw.add(value);
-				}
+		for (int i = money.size() - 1; i >= 0; i--) {
+			Valuable value = this.money.get(i);
+			if (value.getValue() <= amount) {
+				amount = amount - value.getValue();
+				withdraw.add(value);
 			}
-				if (amount == 0) {
-					for (Valuable bValue : withdraw) {
-						this.money.remove(bValue);
-//						balance -= bValue.getValue();
-					}
-					Valuable[] remove = new Valuable[withdraw.size()];
-					withdraw.toArray(remove);
-					return remove;
-				
+		}
+		if (amount == 0) {
+			for (Valuable bValue : withdraw) {
+				this.money.remove(bValue);
+
 			}
-			return null;
-		
-		
+			Valuable[] remove = new Valuable[withdraw.size()];
+			withdraw.toArray(remove);
+			return remove;
+		}
+		return null;
 	}
 
 	/**
@@ -155,12 +150,12 @@ public class Purse {
 		System.out.println(purse.insert(new BankNote(14)));
 		System.out.println(purse.insert(new BankNote(62)));
 		System.out.println(purse.money);
-//		System.out.println(purse.count());
-//		System.out.println(purse.isFull());
-//		System.out.println(purse.getBalance());
-//		System.out.println(purse.toString());
-//		System.out.println(purse.withdraw(12));
-//		System.out.println(Arrays.toString(purse.withdraw(11)));
+		// System.out.println(purse.count());
+		// System.out.println(purse.isFull());
+		// System.out.println(purse.getBalance());
+		// System.out.println(purse.toString());
+		// System.out.println(purse.withdraw(12));
+		// System.out.println(Arrays.toString(purse.withdraw(11)));
 	}
 
 }
