@@ -7,7 +7,7 @@ import java.util.Comparator;
  * 
  * @author Kanchanok Kannee
  */
-public class CoinComparator implements Comparator<Valuable> {
+public class CompareByCurrency implements Comparator<Valuable> {
 
 	/**
 	 * Comparator instance and use it to sort the coins.

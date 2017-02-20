@@ -37,7 +37,7 @@ public class CoinUtil {
 	 * 
 	 */
 	public static void sortByCurrency(List<Valuable> value) {
-		Collections.sort(value, new CoinComparator());
+		Collections.sort(value, new CompareByCurrency());
 	}
 
 	/**
