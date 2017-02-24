@@ -61,15 +61,16 @@ public class ConsoleDialog {
 	public void depositDialog() {
 		System.out.print("Enter value of coin(s) to deposit on one line [eg: 5 5 1]: ");
 		String inline = console.nextLine();
+		Valuable type;
 		// parse input line into numbers
 		Scanner scanline = new Scanner(inline);
 		while (scanline.hasNextDouble()) {
 			double value = scanline.nextDouble();
-			Valuable type;
-			if (value >= 20) {
-				type = new BankNote(value);
-			} else {
-				type = new Coin(value);
+			try {
+				type = MoneyFactory.getInstance().createMoney(value);
+			} catch (IllegalArgumentException e) {
+				System.out.println("Sorry, " + value + " is not a valid amount.");
+				continue;
 			}
 			System.out.printf("Deposit %s... ", type.toString());
 			boolean ok = purse.insert(type);

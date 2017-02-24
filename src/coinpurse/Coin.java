@@ -5,22 +5,17 @@ package coinpurse;
  * 
  * @author Kanchanok Kannee
  */
-public class Coin implements Valuable {
+public class Coin extends AbstractValuable {
 
 	public static final String DEFAULT_CURRENCY = "Baht";
-	/** Value of the coin. */
-	private double value;
-	/** The currency, of course. */
-	private String currency;
-
+	private double newvalue;
 	/**
 	 * A coin with given value using the default currency.
 	 * 
 	 * @param value is the value of coin.
 	 */
 	public Coin(double value) {
-		this.value = value;
-		this.currency = DEFAULT_CURRENCY;
+		this(value, DEFAULT_CURRENCY);
 	}
 
 	/**
@@ -36,48 +31,22 @@ public class Coin implements Valuable {
 	}
 
 	/**
-	 * Return the value of the coin.
-	 * 
-	 * @return the value.
-	 */
-	public double getValue() {
-		return value;
-	}
-
-	/**
-	 * Return the currency of the coin.
-	 * 
-	 * @return the currency.
-	 */
-	public String getCurrency() {
-		return currency;
-	}
-
-	/**
-	 * Compare two coins by value and currency. They are equal if the value and
-	 * currency matches.
-	 * 
-	 * @param arg is another Object to compare to this one.
-	 * @return true if the value is same and the currency is same, false
-	 *         otherwise.
-	 */
-	@Override
-	public boolean equals(Object arg) {
-		if (arg == null)
-			return false;
-		if (arg.getClass() != this.getClass())
-			return false;
-		Coin other = (Coin) arg;
-		return this.value == other.value && this.currency == other.currency;
-	}
-
-	/**
 	 * Return a string representation of this Coin
 	 * 
 	 * @return string that describes the coin
 	 * 
 	 */
 	public String toString() {
-		return this.value + "-" + this.currency;
+		setNewvalue(value);
+		return String.format("%.0f - %s coin",this.newvalue,this.currency);
+	}
+
+
+	public void setNewvalue(double newvalue) {
+		if ( this.value < 1 ) {
+		this.newvalue = value*100;
+		} else this.newvalue = value;
+			
+		
 	}
 }
