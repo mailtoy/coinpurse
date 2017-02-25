@@ -9,6 +9,7 @@ public class Coin extends AbstractValuable {
 
 	public static final String DEFAULT_CURRENCY = "Baht";
 	private double newvalue;
+
 	/**
 	 * A coin with given value using the default currency.
 	 * 
@@ -21,8 +22,10 @@ public class Coin extends AbstractValuable {
 	/**
 	 * A coin with given value and currency.
 	 * 
-	 * @param value is the value of coin.
-	 * @param currency is the currency of coin.
+	 * @param value
+	 *            is the value of coin.
+	 * @param currency
+	 *            is the currency of coin.
 	 */
 	public Coin(double value, String currency) {
 		this.value = value;
@@ -38,15 +41,19 @@ public class Coin extends AbstractValuable {
 	 */
 	public String toString() {
 		setNewvalue(value);
-		return String.format("%.0f - %s coin",this.newvalue,this.currency);
+		return String.format("%.0f - %s coin", this.newvalue, this.currency);
 	}
 
-
+	/**
+	 * Set the value of money if value less than 1, multiply by 100.
+	 * 
+	 * @param newvalue is the value that you want to change.
+	 */
 	public void setNewvalue(double newvalue) {
-		if ( this.value < 1 ) {
-		this.newvalue = value*100;
-		} else this.newvalue = value;
-			
-		
+		if (this.value < 1) {
+			this.newvalue = value * 100;
+		} else
+			this.newvalue = value;
+
 	}
 }

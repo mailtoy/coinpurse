@@ -1,5 +1,10 @@
 package coinpurse;
 
+/**
+ * Abstract class for Valuable interface to avoid duplicate code.
+ * @author Kanchanok Kannee
+ *
+ */
 public abstract class AbstractValuable implements Valuable {
 
 	/** Value of the coin. */
@@ -11,6 +16,11 @@ public abstract class AbstractValuable implements Valuable {
 		super();
 	}
 	
+	/**
+	 * Initialize a AbstractValuable with given value and currency.
+	 * @param value is the value of money.
+	 * @param currency is the currency of money.
+	 */
 	public AbstractValuable ( double value, String currency ) {
 		this.value = value;
 		this.currency = currency;
@@ -19,7 +29,7 @@ public abstract class AbstractValuable implements Valuable {
 	
 
 	/**
-	 * Return the value of the coin.
+	 * Return the value of the money.
 	 * 
 	 * @return the value.
 	 */
@@ -28,7 +38,7 @@ public abstract class AbstractValuable implements Valuable {
 	}
 
 	/**
-	 * Return the currency of the coin.
+	 * Return the currency of the money.
 	 * 
 	 * @return the currency.
 	 */
@@ -37,7 +47,7 @@ public abstract class AbstractValuable implements Valuable {
 	}
 
 	/**
-	 * Compare two coins by value and currency. They are equal if the value and
+	 * Compare two money by value and currency. They are equal if the value and
 	 * currency matches.
 	 * 
 	 * @param arg is another Object to compare to this one.
@@ -54,6 +64,13 @@ public abstract class AbstractValuable implements Valuable {
 		return this.value == other.getValue() && this.currency == other.getCurrency();
 	}
 
+	/**
+	 * If the currency is the same, order values by values 
+	 * If the currency is not the same, sort the currency.
+	 * @return < 0 when this value is less than other value,
+	 *         = 0 when this value equals other value and
+	 *         > 0 when this value is more than other value.
+	 */
 	@Override
 	public int compareTo(Valuable other) {
 		if ( this.getCurrency().equals(other.getCurrency())) {

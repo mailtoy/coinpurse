@@ -16,8 +16,9 @@ public class Main {
 	 * @param args not used
 	 */
 	public static void main(String[] args) {
-		Purse mai = new Purse(10);
-		ConsoleDialog ui = new ConsoleDialog(mai);
+		Purse purse = new Purse(CAPACITY);
+		ConsoleDialog ui = new ConsoleDialog(purse);
 		ui.run();
+		MoneyFactory.setMoneyFactory();
 	}
 }

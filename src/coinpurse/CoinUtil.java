@@ -59,45 +59,6 @@ public class CoinUtil {
 			System.out.println(map.get(currency) + " " + currency);
 		}
 	}
-	// Map<String,Double> map = new HashMap<String,Double>();
-	// Iterator<Valuable> iterator = value.iterator();
-	// while (iterator.hasNext()) {
-	// Valuable valuable = iterator.next();
-	// if (map.containsKey(valuable.getCurrency() ) ) {
-	// map.put(valuable.getCurrency(), map.get(valuable.getCurrency()) +
-	// valuable.getValue());
-	// }
-	// else map.put(valuable.getCurrency(), valuable.getValue());
-	// }
-	// for(String key : map.keySet()) {
-	// // print the key (string) and value (integer)
-	// System.out.println(key + " : " + map.get(key));
-	// }
-
-	// sortByCurrency(coins);
-	// String currency = coins.get(0).getCurrency();
-	// double sum = 0.0;
-	// for (Valuable curr : coins) {
-	// if (curr.getCurrency().equals(currency)) {
-	// sum += curr.getValue();
-	// } else {
-	// System.out.printf("%.2f %s\n", sum, currency);
-	// sum = 0;
-	// sum = sum + curr.getValue();
-	// currency = curr.getCurrency();
-	// }
-	// }
-	// System.out.printf("%.2f %s\n", sum, currency);
-	// }
-
-	// Map<String, Double> map = new HashMap<>();
-	// for (Coin c : coins) {
-	// map.put(c.getCurrency(), map.getOrDefault(c.getCurrency(), 0.0) +
-	// c.getValue());
-	// }
-	// for (String currency : map.keySet()) {
-	// System.out.println(map.get(currency) + " " + currency);
-	// }
 
 	/**
 	 * This method contains some code to test the above methods.
