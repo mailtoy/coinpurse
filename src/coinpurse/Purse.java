@@ -95,7 +95,7 @@ public class Purse {
 					return Double.compare(o1.getValue(), o2.getValue());
 				}
 			});
-			Collections.reverse(money);
+//			Collections.reverse(money);
 			return true;
 		}
 		return false;

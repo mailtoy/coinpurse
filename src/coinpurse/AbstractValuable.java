@@ -11,11 +11,11 @@ public abstract class AbstractValuable implements Valuable {
 	protected double value;
 	/** The currency, of course. */
 	protected String currency;
-
+	
 	public AbstractValuable() {
 		super();
 	}
-	
+
 	/**
 	 * Initialize a AbstractValuable with given value and currency.
 	 * @param value is the value of money.
@@ -25,8 +25,6 @@ public abstract class AbstractValuable implements Valuable {
 		this.value = value;
 		this.currency = currency;
 	}
-	
-	
 
 	/**
 	 * Return the value of the money.
@@ -73,11 +71,11 @@ public abstract class AbstractValuable implements Valuable {
 	 */
 	@Override
 	public int compareTo(Valuable other) {
-		if ( this.getCurrency().equals(other.getCurrency())) {
-		if ( other == null ) return -1;
+	if ( other == null ) {
+		return -1;
+	} else if ( this.getCurrency().equals( other.getCurrency()) ) {
 		return (int) Math.signum( this.getValue() - other.getValue() );
-		}
-		return this.getCurrency().compareTo(other.getCurrency());
+	} else return this.getCurrency().compareTo( other.getCurrency() );
 	}
 
 }

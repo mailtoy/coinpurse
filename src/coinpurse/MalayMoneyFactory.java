@@ -1,23 +1,39 @@
 package coinpurse;
 
+/**
+ * MalayMoneyFactory is a class that creates money of Malaysia.
+ * 
+ * @author Kanchanok Kannee
+ *
+ */
 public class MalayMoneyFactory extends MoneyFactory {
+	
+	private static final String CURRENCY =  "Ringgit";
+	private static final String currencyCoin = "Sen";
 
+	/**
+	 * Create money of Malaysia.
+	 * 
+	 * @param value is a value that you want to create.
+	 * @return the Valuable object.
+	 * @throws IllegalArgumentException if value is not valid.
+	 */
 	@Override
-	protected Valuable createMoney(double value) throws IllegalArgumentException {
+	protected Valuable createMoney(double value) {
+		
 		Valuable valuable;
-		String currency =  "Ringgit";
-		String currencyCoin = "Sen";
-		if ( value == 0.05 || value == 0.10 || value == 0.20 || value == 0.50 ) {
+		if ( value < 1 ) {
 			valuable = new Coin(value , currencyCoin);
 		}
-		else if ( value == 1 || value == 2 || value == 5 || value == 10 || value == 20 || value == 50 || value == 100 ) {
-			valuable = new BankNote(value , currency);
+		else if ( value >= 1) {
+			valuable = new BankNote(value, CURRENCY);
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
 		return valuable;
 	}
+	
 	public static void main (String [] arg) {
 		MoneyFactory factory = MoneyFactory.getInstance();
 		Valuable m = factory.createMoney(5);

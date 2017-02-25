@@ -17,14 +17,27 @@ public class ConsoleDialog {
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner(System.in);
 	private Purse purse;
-
+	private String currency;
+	// the object of MoneyFactory
+	private MoneyFactory factory;
+	
 	/**
 	 * Initialize a new Purse dialog.
 	 * 
 	 * @param purse is the Purse to interact with.
+	 * @param country is the country to use.
 	 */
-	public ConsoleDialog(Purse purse) {
+	public ConsoleDialog(Purse purse, String country) {
+		factory = MoneyFactory.getInstance();
 		this.purse = purse;
+		if (country .equals("Thailand")) {
+			this.currency = "Baht";
+		}
+		if (country .equals("Malaysia")) {
+			this.currency = "Ringgit";
+		}
+		else this.currency = "";
+		
 
 	}
 
@@ -32,7 +45,7 @@ public class ConsoleDialog {
 	public void run() {
 		String choice = "";
 		while (true) {
-			System.out.printf("Purse contains %.2f %s\n", purse.getBalance(), CURRENCY);
+			System.out.printf("Purse contains %.2f %s\n", purse.getBalance(), currency);
 			if (purse.isFull())
 				System.out.println("Purse is FULL.");
 			// print a list of choices
@@ -61,13 +74,13 @@ public class ConsoleDialog {
 	public void depositDialog() {
 		System.out.print("Enter value of coin(s) to deposit on one line [eg: 5 5 1]: ");
 		String inline = console.nextLine();
-		Valuable type;
 		// parse input line into numbers
 		Scanner scanline = new Scanner(inline);
 		while (scanline.hasNextDouble()) {
+			Valuable type;
 			double value = scanline.nextDouble();
 			try {
-				type = MoneyFactory.getInstance().createMoney(value);
+				type =  factory.getInstance().createMoney(value);
 			} catch (IllegalArgumentException e) {
 				System.out.println("Sorry, " + value + " is not a valid amount.");
 				continue;
