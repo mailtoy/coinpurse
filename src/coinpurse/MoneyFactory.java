@@ -24,7 +24,7 @@ public abstract class MoneyFactory {
 	 */
 	public static MoneyFactory getInstance() {
 		 if(theFactory==null) 
-			 theFactory = new MalayMoneyFactory();
+			 theFactory = new ThaiMoneyFactory();
 			return theFactory;
 	}
 
