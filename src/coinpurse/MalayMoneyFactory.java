@@ -26,7 +26,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 			valuable = new Coin(value , currencyCoin);
 		}
 		else if ( value >= 1) {
-			valuable = new BankNote(value, CURRENCY);
+			valuable = new BankNote(value, CURRENCY,  this.nextSerialNumber++);
 		}
 		else {
 			throw new IllegalArgumentException();

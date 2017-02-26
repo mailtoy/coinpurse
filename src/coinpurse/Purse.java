@@ -152,9 +152,6 @@ public class Purse {
 		System.out.println(purse.insert(new Coin(20)));
 		System.out.println(purse.insert(new Coin(12)));
 		System.out.println(purse.insert(new Coin(25)));
-		System.out.println(purse.insert(new BankNote(12)));
-		System.out.println(purse.insert(new BankNote(14)));
-		System.out.println(purse.insert(new BankNote(62)));
 		System.out.println(purse.money);
 		// System.out.println(purse.count());
 		// System.out.println(purse.isFull());

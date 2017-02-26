@@ -9,6 +9,7 @@ package coinpurse;
 public abstract class MoneyFactory {
 	
 	private static MoneyFactory theFactory;
+	protected long nextSerialNumber = 1000000;
 
 	/**
 	 * constructor is protected to prevent other classes from creating objects

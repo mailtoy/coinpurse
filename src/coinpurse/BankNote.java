@@ -7,18 +7,17 @@ package coinpurse;
  *
  */
 public class BankNote extends AbstractValuable {
-	private static long nextSerialNumber = 1000000;
+//	private static long nextSerialNumber = 1000000;
 	private long serialNumber;
 
 	/**
 	 * A banknote with given value using the default currency.
 	 * 
 	 * @param value is the value of banknote.
+	 * @param currency is the currency of banknote.
 	 */
-	public BankNote(double value) {
-		this.value = value;
-		this.serialNumber = BankNote.nextSerialNumber;
-		BankNote.nextSerialNumber++;
+	public BankNote(double value, String currency) {
+		super(value, currency);
 	}
 
 	/**
@@ -26,12 +25,11 @@ public class BankNote extends AbstractValuable {
 	 * 
 	 * @param value is the value of banknote.
 	 * @param currency is the currency of banknote.
+	 * @param serialNumber is the serial number of banknote
 	 */
-	public BankNote(double value, String currency) {
-		this.value = value;
-		this.currency = currency;
-		this.serialNumber = BankNote.nextSerialNumber;
-		BankNote.nextSerialNumber++;
+	public BankNote(double value, String currency, long serialNumber) {
+		super(value, currency);
+		this.serialNumber = serialNumber;
 	}
 
 	/**

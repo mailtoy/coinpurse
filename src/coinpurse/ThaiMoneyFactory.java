@@ -24,7 +24,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 			valuable = new Coin(value , CURRENCY);
 		}
 		else if ( value == 20 || value == 50 || value == 100 || value == 500 || value == 1000 ) {
-			valuable = new BankNote(value , CURRENCY);
+			valuable = new BankNote(value , CURRENCY, this.nextSerialNumber++);
 		}
 		else {
 			throw new IllegalArgumentException();
