@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ConsoleDialog {
 
 	// default currency for this dialog
-	public static final String CURRENCY = "Baht";
+	public static String CURRENCY;
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner(System.in);
 	private Purse purse;
@@ -31,10 +31,10 @@ public class ConsoleDialog {
 		factory = MoneyFactory.getInstance();
 		this.purse = purse;
 		if (country .equals("Thailand")) {
-			this.currency = "Baht";
+			CURRENCY = "Baht";
 		}
 		if (country .equals("Malaysia")) {
-			this.currency = "Ringgit";
+			CURRENCY = "Ringgit";
 		}
 		else this.currency = "";
 		
@@ -45,7 +45,7 @@ public class ConsoleDialog {
 	public void run() {
 		String choice = "";
 		while (true) {
-			System.out.printf("Purse contains %.2f %s\n", purse.getBalance(), currency);
+			System.out.printf("Purse contains %.2f %s\n", purse.getBalance(), CURRENCY);
 			if (purse.isFull())
 				System.out.println("Purse is FULL.");
 			// print a list of choices
