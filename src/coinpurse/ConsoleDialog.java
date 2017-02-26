@@ -17,7 +17,6 @@ public class ConsoleDialog {
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner(System.in);
 	private Purse purse;
-	private String currency;
 	// the object of MoneyFactory
 	private MoneyFactory factory;
 	
@@ -36,7 +35,7 @@ public class ConsoleDialog {
 		if (country .equals("Malaysia")) {
 			CURRENCY = "Ringgit";
 		}
-		else this.currency = "";
+		else CURRENCY = "";
 		
 
 	}
